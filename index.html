@@ -4,81 +4,131 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Urban Case</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0f172a;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
       color: white;
       text-align: center;
     }
 
     header {
-      padding: 30px 20px;
+      padding: 40px 20px 20px;
     }
 
-    h1 {
-      margin: 10px 0;
+    header h1 {
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    header p {
+      color: #cbd5e1;
+      margin-top: 5px;
+      font-size: 14px;
+    }
+
+    .contenedor {
+      padding: 20px;
     }
 
     .producto {
       background: #1e293b;
-      margin: 20px;
+      border-radius: 20px;
       padding: 20px;
-      border-radius: 15px;
+      margin-bottom: 25px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .producto:hover {
+      transform: translateY(-5px);
     }
 
     .producto img {
       width: 100%;
-      max-width: 250px;
-      border-radius: 10px;
+      max-width: 260px;
+      border-radius: 15px;
+      margin-bottom: 15px;
+    }
+
+    .producto h2 {
+      font-size: 18px;
+      margin-bottom: 8px;
     }
 
     .precio {
       font-size: 20px;
-      margin: 10px 0;
-      font-weight: bold;
+      font-weight: 700;
+      color: #f43f5e;
+      margin-bottom: 15px;
     }
 
     .boton {
       display: inline-block;
-      padding: 12px 20px;
+      padding: 14px 25px;
       background: #25D366;
       color: white;
       text-decoration: none;
-      border-radius: 8px;
-      margin-top: 10px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
     }
 
     .boton:hover {
-      background: #1da851;
+      background: #1ebe5d;
+      transform: scale(1.05);
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      font-size: 12px;
+      color: #94a3b8;
     }
   </style>
 </head>
+
 <body>
 
 <header>
   <h1>Urban Case</h1>
-  <p>✨ Fundas y accesorios para tu estilo ✨</p>
+  <p>✨ Protege tu estilo, define tu vibe ✨</p>
 </header>
 
-<div class="producto">
-  <img src="https://via.placeholder.com/250" alt="Funda Personalizada">
-  <h2>Funda Personalizada</h2>
-  <p class="precio">$8.500</p>
-  <a class="boton" href="https://wa.me/5493496442146?text=Hola%20quiero%20la%20Funda%20Personalizada" target="_blank">
-    Comprar por WhatsApp
-  </a>
+<div class="contenedor">
+
+  <div class="producto">
+    <img src="https://via.placeholder.com/260" alt="Funda Personalizada">
+    <h2>Funda Personalizada</h2>
+    <p class="precio">$8.500</p>
+    <a class="boton" href="https://wa.me/549XXXXXXXX?text=Hola%20quiero%20la%20Funda%20Personalizada" target="_blank">
+      Comprar por WhatsApp
+    </a>
+  </div>
+
+  <div class="producto">
+    <img src="https://via.placeholder.com/260" alt="Silicone Case">
+    <h2>Silicone Case</h2>
+    <p class="precio">$6.000</p>
+    <a class="boton" href="https://wa.me/5493496442146?text=Hola%20quiero%20la%20Silicone%20Case" target="_blank">
+      Comprar por WhatsApp
+    </a>
+  </div>
+
 </div>
 
-<div class="producto">
-  <img src="https://via.placeholder.com/250" alt="Silicone Case">
-  <h2>Silicone Case</h2>
-  <p class="precio">$6.000</p>
-  <a class="boton" href="https://wa.me/549XXXXXXXX?text=Hola%20quiero%20la%20Silicone%20Case" target="_blank">
-    Comprar por WhatsApp
-  </a>
-</div>
+<footer>
+  © 2026 Urban Case - Envíos sin cargo en Esperanza
+</footer>
 
 </body>
 </html>
