@@ -1,136 +1,354 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Urban Case</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root{
+      --bg: #EEF0F7;
+      --card: rgba(255,255,255,.72);
+      --stroke: rgba(30,41,59,.10);
+      --text: #273046;
+      --muted: rgba(39,48,70,.70);
+      --accent: #5b5f8a;
+      --shadow: 0 18px 40px rgba(15,23,42,.10);
+      --whats: #25D366;
+      --new: #E24B4B;
+      --radius: 18px;
+      --newBlueBg: rgba(56,189,248,.18);
+      --newBlueBorder: rgba(56,189,248,.35);
+      --newBlueText: #0284c7;
     }
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #0f172a, #1e293b);
-      color: white;
-      text-align: center;
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background: radial-gradient(900px 400px at 50% -80px, rgba(91,95,138,.22), transparent 60%),
+                  linear-gradient(180deg, var(--bg), #f6f7fb);
+      color:var(--text);
     }
 
-    header {
-      padding: 40px 20px 20px;
+    .wrap{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 20px 16px 40px;
     }
 
-    header h1 {
-      font-size: 28px;
+    .topbar{
+      font-size: 13px;
+      color: var(--muted);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 10px 12px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.55);
+      border-radius: 999px;
+      box-shadow: 0 8px 24px rgba(15,23,42,.06);
+      backdrop-filter: blur(10px);
+      text-align:center;
+    }
+
+    header{
+      text-align:center;
+      padding: 26px 8px 18px;
+    }
+    header h1{
+      margin: 14px 0 6px;
+      letter-spacing: 1px;
+      font-size: 40px;
       font-weight: 700;
+      color: #2f3650;
     }
-
-    header p {
-      color: #cbd5e1;
-      margin-top: 5px;
+    header p{
+      margin: 0;
+      color: var(--muted);
       font-size: 14px;
     }
 
-    .contenedor {
-      padding: 20px;
+    .grid{
+      display:flex;
+      flex-direction:column;
+      gap: 18px;
+      margin-top: 18px;
     }
 
-    .producto {
-      background: #1e293b;
-      border-radius: 20px;
-      padding: 20px;
-      margin-bottom: 25px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-      transition: transform 0.3s ease;
+    .card{
+      position:relative;
+      display:flex;
+      gap:18px;
+      align-items:center;
+      padding: 18px;
+      border-radius: var(--radius);
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
     }
 
-    .producto:hover {
-      transform: translateY(-5px);
-    }
-
-    .producto img {
-      width: 100%;
-      max-width: 260px;
-      border-radius: 15px;
-      margin-bottom: 15px;
-    }
-
-    .producto h2 {
-      font-size: 18px;
-      margin-bottom: 8px;
-    }
-
-    .precio {
-      font-size: 20px;
-      font-weight: 700;
-      color: #f43f5e;
-      margin-bottom: 15px;
-    }
-
-    .boton {
-      display: inline-block;
-      padding: 14px 25px;
-      background: #25D366;
-      color: white;
-      text-decoration: none;
-      border-radius: 50px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-
-    .boton:hover {
-      background: #1ebe5d;
-      transform: scale(1.05);
-    }
-
-    footer {
-      margin-top: 40px;
-      padding: 20px;
+    .badge{
+      position:absolute;
+      left: 14px;
+      top: 14px;
+      background: var(--new);
+      color:white;
+      padding: 6px 12px;
+      border-radius: 999px;
       font-size: 12px;
-      color: #94a3b8;
+      font-weight: 600;
+    }
+
+    .thumb{
+      width: 180px;
+      min-width: 180px;
+      height: 120px;
+      border-radius: 14px;
+      overflow:hidden;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.65);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .thumb img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+    }
+
+    /* Thumb especial para el NEW celeste (sin imagen) */
+    .thumbNew{
+      width: 180px;
+      min-width: 180px;
+      height: 120px;
+      border-radius: 14px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.65);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position: relative;
+      overflow: hidden;
+    }
+    .newPill{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: var(--newBlueBg);
+      border: 1px solid var(--newBlueBorder);
+      color: var(--newBlueText);
+      font-weight: 700;
+      letter-spacing: .5px;
+    }
+    .newPill .spark{
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .info{
+      flex:1;
+      text-align:left;
+    }
+    .title{
+      margin: 2px 0 10px;
+      font-size: 20px;
+      font-weight: 600;
+      color:#2f3650;
+    }
+
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px 14px;
+      align-items:center;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.78);
+      text-decoration:none;
+      color: #2f3650;
+      font-weight: 600;
+      box-shadow: 0 10px 18px rgba(15,23,42,.06);
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 16px 26px rgba(15,23,42,.10);
+    }
+
+    .wa-dot{
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(37,211,102,.14);
+      display:grid;
+      place-items:center;
+      border: 1px solid rgba(37,211,102,.25);
+    }
+    .wa-dot svg{display:block}
+
+    .link{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+      padding: 6px 2px;
+      border-bottom: 1px solid rgba(91,95,138,.25);
+    }
+    .link:hover{
+      border-bottom-color: rgba(91,95,138,.55);
+    }
+
+    footer{
+      text-align:center;
+      margin-top: 26px;
+      color: rgba(39,48,70,.55);
+      font-size: 12px;
+    }
+
+    @media (max-width: 640px){
+      header h1{font-size: 34px;}
+      .card{flex-direction:column; align-items:stretch;}
+      .thumb, .thumbNew{width:100%; min-width:0; height: 160px;}
+      .info{text-align:left;}
     }
   </style>
 </head>
 
 <body>
+  <div class="wrap">
 
-<header>
-  <h1>Urban Case</h1>
-  <p>✨ Protege tu estilo, define tu vibe ✨</p>
-</header>
+    <div class="topbar">
+      🚚 Envíos sin cargo a <strong>Esperanza</strong>, Punto de Retiro en <strong>Santa Fe</strong> 📍
+    </div>
 
-<div class="contenedor">
+    <header>
+      <h1>URBAN CASE</h1>
+      <p>Protege tu estilo. Define tu actitud. ✨</p>
+    </header>
 
-  <div class="producto">
-    <img src="funda1.jpg" alt="Funda Personalizada">
-    <h2>Funda Personalizada</h2>
-    <p class="precio">$8.500</p>
-    <a class="boton" href="https://wa.me/5493496442146?text=Hola%20quiero%20la%20Funda%20Personalizada" target="_blank">
-      Comprar por WhatsApp
-    </a>
+    <main class="grid">
+
+      <!-- 1) Fundas personalizadas -->
+      <section class="card">
+        <span class="badge">NUEVO</span>
+        <div class="thumb">
+          <img src="images/fundas.jpg" alt="Fundas personalizadas">
+        </div>
+        <div class="info">
+          <div class="title">Fundas personalizadas</div>
+          <div class="actions">
+            <a class="btn" href="https://wa.me/5493496442146" target="_blank" rel="noopener">
+              <span class="wa-dot" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 32 32" fill="none">
+                  <path fill="#25D366" d="M19.11 17.64c-.26-.13-1.52-.75-1.76-.84-.24-.09-.41-.13-.59.13-.18.26-.68.84-.84 1.01-.15.18-.31.2-.57.07-.26-.13-1.1-.4-2.09-1.29-.77-.69-1.29-1.55-1.44-1.81-.15-.26-.02-.4.11-.53.12-.12.26-.31.4-.46.13-.15.18-.26.26-.44.09-.18.04-.33-.02-.46-.07-.13-.59-1.42-.81-1.95-.21-.5-.42-.43-.59-.44l-.5-.01c-.18 0-.46.07-.7.33-.24.26-.92.9-.92 2.2 0 1.29.94 2.54 1.07 2.72.13.18 1.85 2.83 4.48 3.97.63.27 1.12.43 1.5.55.63.2 1.2.17 1.65.1.5-.08 1.52-.62 1.73-1.21.21-.59.21-1.1.15-1.21-.06-.11-.24-.18-.5-.31Z"/>
+                  <path fill="#25D366" d="M16.02 3C8.84 3 3 8.84 3 16.02c0 2.44.67 4.82 1.95 6.9L3 29l6.26-1.9a13 13 0 0 0 6.76 1.85h.01c7.18 0 13.02-5.84 13.02-13.02C29.05 8.84 23.2 3 16.02 3Zm0 23.75h-.01a10.8 10.8 0 0 1-5.52-1.52l-.4-.24-3.72 1.13 1.2-3.62-.26-.42a10.78 10.78 0 1 1 8.72 4.69Z"/>
+                </svg>
+              </span>
+              Comprar por WhatsApp
+            </a>
+
+            <a class="link" href="pdf/inspo-ideas.pdf" target="_blank" rel="noopener">✨ Inspo / Ideas</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2) Silicone Case -->
+      <section class="card">
+        <div class="thumb">
+          <img src="images/silicone.jpg" alt="Silicone Case">
+        </div>
+        <div class="info">
+          <div class="title">Silicone Case</div>
+          <div class="actions">
+            <a class="btn" href="https://wa.me/5493496442146" target="_blank" rel="noopener">
+              <span class="wa-dot" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 32 32" fill="none">
+                  <path fill="#25D366" d="M19.11 17.64c-.26-.13-1.52-.75-1.76-.84-.24-.09-.41-.13-.59.13-.18.26-.68.84-.84 1.01-.15.18-.31.2-.57.07-.26-.13-1.1-.4-2.09-1.29-.77-.69-1.29-1.55-1.44-1.81-.15-.26-.02-.4.11-.53.12-.12.26-.31.4-.46.13-.15.18-.26.26-.44.09-.18.04-.33-.02-.46-.07-.13-.59-1.42-.81-1.95-.21-.5-.42-.43-.59-.44l-.5-.01c-.18 0-.46.07-.7.33-.24.26-.92.9-.92 2.2 0 1.29.94 2.54 1.07 2.72.13.18 1.85 2.83 4.48 3.97.63.27 1.12.43 1.5.55.63.2 1.2.17 1.65.1.5-.08 1.52-.62 1.73-1.21.21-.59.21-1.1.15-1.21-.06-.11-.24-.18-.5-.31Z"/>
+                  <path fill="#25D366" d="M16.02 3C8.84 3 3 8.84 3 16.02c0 2.44.67 4.82 1.95 6.9L3 29l6.26-1.9a13 13 0 0 0 6.76 1.85h.01c7.18 0 13.02-5.84 13.02-13.02C29.05 8.84 23.2 3 16.02 3Zm0 23.75h-.01a10.8 10.8 0 0 1-5.52-1.52l-.4-.24-3.72 1.13 1.2-3.62-.26-.42a10.78 10.78 0 1 1 8.72 4.69Z"/>
+                </svg>
+              </span>
+              Comprar por WhatsApp
+            </a>
+
+            <a class="link" href="pdf/modelos-silicone.pdf" target="_blank" rel="noopener">🌍 Modelos y colores disponibles</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3) Accesorios -->
+      <section class="card">
+        <div class="thumb">
+          <img src="images/accesorios.jpg" alt="Accesorios">
+        </div>
+        <div class="info">
+          <div class="title">Accesorios</div>
+          <div class="actions">
+            <a class="btn" href="https://wa.me/5493496442146" target="_blank" rel="noopener">
+              <span class="wa-dot" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 32 32" fill="none">
+                  <path fill="#25D366" d="M19.11 17.64c-.26-.13-1.52-.75-1.76-.84-.24-.09-.41-.13-.59.13-.18.26-.68.84-.84 1.01-.15.18-.31.2-.57.07-.26-.13-1.1-.4-2.09-1.29-.77-.69-1.29-1.55-1.44-1.81-.15-.26-.02-.4.11-.53.12-.12.26-.31.4-.46.13-.15.18-.26.26-.44.09-.18.04-.33-.02-.46-.07-.13-.59-1.42-.81-1.95-.21-.5-.42-.43-.59-.44l-.5-.01c-.18 0-.46.07-.7.33-.24.26-.92.9-.92 2.2 0 1.29.94 2.54 1.07 2.72.13.18 1.85 2.83 4.48 3.97.63.27 1.12.43 1.5.55.63.2 1.2.17 1.65.1.5-.08 1.52-.62 1.73-1.21.21-.59.21-1.1.15-1.21-.06-.11-.24-.18-.5-.31Z"/>
+                  <path fill="#25D366" d="M16.02 3C8.84 3 3 8.84 3 16.02c0 2.44.67 4.82 1.95 6.9L3 29l6.26-1.9a13 13 0 0 0 6.76 1.85h.01c7.18 0 13.02-5.84 13.02-13.02C29.05 8.84 23.2 3 16.02 3Zm0 23.75h-.01a10.8 10.8 0 0 1-5.52-1.52l-.4-.24-3.72 1.13 1.2-3.62-.26-.42a10.78 10.78 0 1 1 8.72 4.69Z"/>
+                </svg>
+              </span>
+              Comprar por WhatsApp
+            </a>
+
+            <a class="link" href="pdf/accesorios-novedades.pdf" target="_blank" rel="noopener">🔥 Novedades →</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4) Novedades / Importados (SIN FOTO, NEW celeste) -->
+      <section class="card">
+        <div class="thumbNew" aria-hidden="true">
+          <div class="newPill">
+            <span class="spark">🆕</span>
+            <span>NEW</span>
+          </div>
+        </div>
+        <div class="info">
+          <div class="title">Novedades / Importados</div>
+          <div class="actions">
+            <a class="btn" href="https://wa.me/5493496442146" target="_blank" rel="noopener">
+              <span class="wa-dot" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 32 32" fill="none">
+                  <path fill="#25D366" d="M19.11 17.64c-.26-.13-1.52-.75-1.76-.84-.24-.09-.41-.13-.59.13-.18.26-.68.84-.84 1.01-.15.18-.31.2-.57.07-.26-.13-1.1-.4-2.09-1.29-.77-.69-1.29-1.55-1.44-1.81-.15-.26-.02-.4.11-.53.12-.12.26-.31.4-.46.13-.15.18-.26.26-.44.09-.18.04-.33-.02-.46-.07-.13-.59-1.42-.81-1.95-.21-.5-.42-.43-.59-.44l-.5-.01c-.18 0-.46.07-.7.33-.24.26-.92.9-.92 2.2 0 1.29.94 2.54 1.07 2.72.13.18 1.85 2.83 4.48 3.97.63.27 1.12.43 1.5.55.63.2 1.2.17 1.65.1.5-.08 1.52-.62 1.73-1.21.21-.59.21-1.1.15-1.21-.06-.11-.24-.18-.5-.31Z"/>
+                  <path fill="#25D366" d="M16.02 3C8.84 3 3 8.84 3 16.02c0 2.44.67 4.82 1.95 6.9L3 29l6.26-1.9a13 13 0 0 0 6.76 1.85h.01c7.18 0 13.02-5.84 13.02-13.02C29.05 8.84 23.2 3 16.02 3Zm0 23.75h-.01a10.8 10.8 0 0 1-5.52-1.52l-.4-.24-3.72 1.13 1.2-3.62-.26-.42a10.78 10.78 0 1 1 8.72 4.69Z"/>
+                </svg>
+              </span>
+              Comprar por WhatsApp
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>© 2026 Urban Case - Todos los derechos reservados</footer>
   </div>
-
-  <div class="producto">
-    <img src="Silicone.jpg" alt="Silicone Case">
-    <h2>Silicone Case</h2>
-    <p class="precio">$6.000</p>
-    <a class="boton" href="https://wa.me/5493496442146?text=Hola%20quiero%20la%20Silicone%20Case" target="_blank">
-      Comprar por WhatsApp
-    </a>
-  </div>
-
-</div>
-
-<footer>
-  © 2026 Urban Case - Envíos sin cargo en Esperanza
-</footer>
-
 </body>
 </html>
+
+
 
 
